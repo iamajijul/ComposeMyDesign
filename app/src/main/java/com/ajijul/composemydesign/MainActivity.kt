@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -20,35 +21,31 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            /*For Column : Main axis is the vertical axis because if we add any item
-            * it will stack vertically AND cross axis is horizontal axis
-            * For Row : Main axis is the horizontal axis because if we add any item
-            * it will stack horizontally AND cross axis is vertical axis*/
-            Column(modifier = Modifier.background(Color.Blue)) {
-                Column(
-                    modifier = Modifier
-                        .background(Color.Green)
-                        .fillMaxWidth()
-                        .height(100.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text("Hello")
-                    Text("Column")
-                }
-
-                Row(
-                    modifier = Modifier
-                        .background(Color.Red)
-                        .fillMaxWidth()
-                        .height(100.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text("Hello")
-                    Text("Row")
-                }
+            Column(
+                modifier = Modifier
+                    .background(Color.Green)
+                    .fillMaxHeight(0.5f)
+                    .width(600.dp)// If views goes out of the screen, it will fixed on max width of parent view
+                    // .requiredWidth(600.dp) // it will fix the width of the view, if width goes out of screen then it will take that width
+                    .border(5.dp, Color.Black)
+                    .padding(5.dp)
+                    .border(5.dp, Color.Red)
+                    .padding(5.dp)
+                    .border(5.dp, Color.Blue)
+                    .padding(5.dp)
+                    .border(5.dp, Color.Magenta)
+                    .padding(top = 20.dp, start = 20.dp)
+            ) {
+                Text(
+                    "Hello", modifier = Modifier
+                        .offset(0.dp, 20.dp)
+                        .padding(5.dp)
+                        .border(5.dp, Color.Red)
+                )
+                Spacer(modifier = Modifier.height(40.dp))
+                Text("Column")
             }
+
         }
     }
 }
