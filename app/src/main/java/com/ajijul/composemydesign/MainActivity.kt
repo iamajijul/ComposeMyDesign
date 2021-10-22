@@ -20,35 +20,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            /*For Column : Main axis is the vertical axis because if we add any item
-            * it will stack vertically AND cross axis is horizontal axis
-            * For Row : Main axis is the horizontal axis because if we add any item
-            * it will stack horizontally AND cross axis is vertical axis*/
-            Column(modifier = Modifier.background(Color.Blue)) {
-                Column(
-                    modifier = Modifier
-                        .background(Color.Green)
-                        .fillMaxWidth()
-                        .height(100.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text("Hello")
-                    Text("Column")
-                }
 
-                Row(
-                    modifier = Modifier
-                        .background(Color.Red)
-                        .fillMaxWidth()
-                        .height(100.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text("Hello")
-                    Text("Row")
-                }
-            }
         }
     }
 }
